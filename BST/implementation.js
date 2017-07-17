@@ -39,10 +39,10 @@ function findMin(data){
 	
 	if( data ){
 		node = core.BST_Search.call(this,tree.root, data);
-		min = core.BST_findMinimum(node);
+		min = core.BST_FindMinimum(node);
 	}
 	else{
-		min = core.BST_findMinimum(tree.root);
+		min = core.BST_FindMinimum(tree.root);
 	}
 	return min.value;
 }
@@ -53,10 +53,10 @@ function findMax(data){
 	
 	if( data ){
 		node = core.BST_Search.call(this,tree.root, data);
-		max = core.BST_findMaximum(node);
+		max = core.BST_FindMaximum(node);
 	}
 	else{
-		max = core.BST_findMaximum(tree.root);
+		max = core.BST_FindMaximum(tree.root);
 	}
 	return max.value;
 }
@@ -68,7 +68,7 @@ function hasNext(data){
 		if( !node ){
 			throw new Error('The node with value ' + data + ' is not yet present in the BST');
 		}	
-		return core.BST_findSuccessor.call(this, node) ? true : false;
+		return core.BST_FindSuccessor.call(this, node) ? true : false;
 	}
 	throw new Error('You must pass valid argument to function "hasNext"');
 }
@@ -80,7 +80,7 @@ function next(data){
 		if( !node ){
 			throw new Error('The node with value ' + data + ' is not yet present in the BST');
 		}	
-		return core.BST_findSuccessor.call(this, node) ? core.BST_findSuccessor.call(this, node).value : null;
+		return core.BST_FindSuccessor.call(this, node) ? core.BST_FindSuccessor.call(this, node).value : null;
 	}
 	throw new Error('You must pass valid argument to function "next"');
 }
@@ -92,7 +92,7 @@ function hasPrevious(data){
 		if( !node ){
 			throw new Error('The node with value ' + data + ' is not yet present in the BST');
 		}	
-		return core.BST_findPredecessor.call(this, node) ? true : false;
+		return core.BST_FindPredecessor.call(this, node) ? true : false;
 	}
 	throw new Error('You must pass valid argument to function "hasPrevious"');
 }
@@ -104,7 +104,7 @@ function previous(data){
 		if( !node ){
 			throw new Error('The node with value ' + data + ' is not yet present in the BST');
 		}	
-		return core.BST_findPredecessor.call(this, node) ? core.BST_findPredecessor.call(this, node).value : null;
+		return core.BST_FindPredecessor.call(this, node) ? core.BST_FindPredecessor.call(this, node).value : null;
 	}
 	throw new Error('You must pass valid argument to function "previous"');
 }

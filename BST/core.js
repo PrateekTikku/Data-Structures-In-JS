@@ -64,7 +64,7 @@ function BST_Search(pointer, value) {
 
 function BST_FindSuccessor(node){
 	if( node.right )
-		return BST_findMinimum(node.right);
+		return BST_FindMinimum(node.right);
 	
 	var parent = node.parent;
 	while( parent && parent.right == node ){
@@ -76,7 +76,7 @@ function BST_FindSuccessor(node){
 
 function BST_FindPredecessor(node){
 	if( node.left )
-		return BST_findMaximum(node.left);
+		return BST_FindMaximum(node.left);
 	
 	var parent = node.parent;
 	while( parent && parent.left == node ){
@@ -100,8 +100,39 @@ function BST_FindMaximum(node){
 	return node;
 }
 
-function BST_Delete(node){
+function BST_Transplant(u, v){
+	var tree = this;
+	if( u.parent == null)
+		tree.root = u;
+	else if( u == u.parent.left )
+		u.parent.left = v;
+	else
+		u.parent.right = v;
 	
+	if( v != null )
+		v.parent = u.parent;
+}
+
+function BST_Delete(node){
+	var tree = this;
+	var min;
+	
+	if (node.left == null)
+		BST_Transplant.call(tree, node, node.right);
+	else if (node.right == null)
+		BST_Transplant.call(tree, node, node.left);
+	else {
+		min = BST_FindMinimum.call(tree, node);
+		if(min.parent != node){
+			BST_Transplant.call(tree, min, min.right);
+			min.right = node.right;
+			min.right.parent = min;
+		}
+		BST_Transplant.call(tree, node, min);
+		min.left = node.left;
+		min.left.parent = node.parent;
+	}
+	return node.value;
 }
 
 module.exports = {
