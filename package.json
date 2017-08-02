@@ -1,0 +1,32 @@
+{
+  "name": "trees",
+  "version": "1.0.0",
+  "description": "An implementation of most common data structures based in trees e.g. BST, Heaps, Priority Queues, Trie, B-Tree, B+ Tree etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Binary",
+    "Search",
+    "Tree",
+    "BST",
+    "Heaps",
+    "min-heap",
+    "max-heap",
+    "priority",
+    "queues",
+    "trie",
+    "b-tree",
+    "b+",
+    "tree",
+    "red",
+    "black",
+    "tree"
+  ],
+  "author": "Prateek",
+  "license": "MIT",
+  "dependencies": {
+    "es6-symbol": "^3.1.1"
+  }
+}
